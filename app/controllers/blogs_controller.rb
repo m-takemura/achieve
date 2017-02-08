@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @blogs = Blog.all
+    @blogs = Blog.where(user_id: current_user.id).order("created_at desc")
   end
   
   def new
@@ -19,6 +19,8 @@ class BlogsController < ApplicationController
 #    redirect_to blogs_path, notice: 'ブログを作成しました！'
 
     @blog = Blog.new(blogs_params)
+    # current_userはdeviseの機能
+    @blog.user_id = current_user.id
     if @blog.save
       redirect_to blogs_path, notice: 'ブログを作成しました！'
     else
