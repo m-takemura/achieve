@@ -8,10 +8,12 @@
 
 100.times do |n|
   email = Faker::Internet.email
+  name = Faker::Name.name
   password = "password"
   User.create!(email: email,
                password: password,
                password_confirmation: password,
+               name: name,
                )
 end
 
@@ -22,5 +24,6 @@ users.each do |f|
   content=Faker::Book.genre
   Blog.create!(user_id: user_id,
                title: title,
-               content: content)
+               content: content,
+               )
 end
