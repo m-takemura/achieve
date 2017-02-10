@@ -1,6 +1,6 @@
 <div class="container">
   <div class="wrapper col-md-4 col-md-offset-4 col-sm-10">
-    <h2>アカウント確認メールの再送信</h2>
+    <h2>認証メールの再送信</h2>
 
     <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
       <%= devise_error_messages! %>
@@ -11,7 +11,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "確認メールを送信する" %>
+        <%= f.submit "認証メールを送信する" %>
       </div>
     <% end %>
 
