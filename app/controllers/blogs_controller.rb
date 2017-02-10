@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   def index
     # @blogs = Blog.where(user_id: current_user.id).order("created_at desc")
     @blogs = Blog.order("created_at desc")
+    # binding.pry
   end
 
   def new
