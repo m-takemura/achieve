@@ -3,7 +3,8 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @blogs = Blog.where(user_id: current_user.id).order("created_at desc")
+    # @blogs = Blog.where(user_id: current_user.id).order("created_at desc")
+    @blogs = Blog.order("created_at desc")
   end
 
   def new
