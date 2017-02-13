@@ -1,11 +1,11 @@
 # config/initializers/her.rb
 Her::API.setup url: "https://boiling-sands-81819.herokuapp.com/" do |c|
-  # Request
+  # RequestパラメータをURLエンコードする
   c.use Faraday::Request::UrlEncoded
 
-  # Response
+  # ResponseをJSON形式で返す
   c.use Her::Middleware::DefaultParseJSON
 
-  # Adapter
+  # Adapterを指定（NetHttp）
   c.use Faraday::Adapter::NetHttp
 end
