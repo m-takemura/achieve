@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
         uid:      auth.uid,
         email:    auth.info.email ||="#{auth.uid}-#{auth.provider}@example.com",
         image_url:auth.info.image,
-        password: Device.friendly_token[0,20]
+        password: Devise.friendly_token[0,20]
       )
       user.skip_confirmation!
       user.save(validate:false)
