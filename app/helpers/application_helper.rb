@@ -22,7 +22,7 @@ module ActionView
 
         html=<<-HTML
         <div class="alert alert-danger">
-         <ul>#{message}</ul>
+         <ul>#{messages}</ul>
         </div>
         HTML
 
