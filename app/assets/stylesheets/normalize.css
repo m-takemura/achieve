@@ -465,6 +465,7 @@ img{
   max-height: 100%;
 }
 
-blog-author{
-  height: 40px;
+.blog-author img{
+  width: 50px;
+  height: auto;
 }
