@@ -55,6 +55,11 @@ class BlogsController < ApplicationController
     render :new if @blog.invalid?
   end
 
+  def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
+  end
+
   private
     def blogs_params
       params.require(:blog).permit(:title, :content)
