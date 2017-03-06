@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # devise_for :users
   # get 'blogs' => "blogs#index"
@@ -26,6 +28,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :relationships, only: [:create, :destroy]
+
+  resources :conversations do
+    resources :messages
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at:"/letter_opener"
