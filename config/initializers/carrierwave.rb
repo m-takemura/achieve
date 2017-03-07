@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1',
     path_style: true,
   }
-  config.fog_public =therubyracer
+  config.fog_public =true
   confif.fog_attributes={'Cache-Control'=>'public, max-age=86400'}
 
   case Rails.env
