@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -62,6 +63,8 @@ gem 'devise'
 
 gem 'faker'
 
+gem 'dotenv-rails'
+
 group :development do
   gem 'letter_opener_web'
   # gem 'dotenv-rails'
@@ -86,6 +89,3 @@ gem 'carrierwave'
 gem 'pusher'
 
 gem 'fog'
-
-gem 'dotenv-rails'
-gem 'unicorn'
