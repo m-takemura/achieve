@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
   belongs_to :blog
 
   after_save do
-    #ブログ作成者とコメント投稿者が異なる場合、コメント投稿を通知する
+    #ブログ作成者とコメント投稿者(つまりカレントユーザ)が異なる場合、コメント投稿を通知する
     unless blog.user_id == user.id
       Pusher.trigger("user_#{blog.user_id}_channel",'comment_created',{
         message:'あなたの作成したブログにコメントが付きました'
@@ -15,7 +15,10 @@ class Comment < ActiveRecord::Base
     # binding.pry
     Pusher.trigger("user_#{blog.user_id}_channel", 'notification_created',{
       #Comment#user.notifications
-      unread_counts: Notification.where(user_id: blog.user.id, read: false).count
+      #コメント投稿者がブログ投稿者と同じものはカウントしない
+      unread_counts: Notification.includes(:comment)
+      .where(user_id: blog.user.id, read: false)
+      .where.not(comments:{user_id: blog.user.id}).count
     })
   end
 

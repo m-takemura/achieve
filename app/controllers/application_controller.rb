@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
     end
 
     def current_notifications
-      @notifications_count=Notification.where(user_id: current_user.id).where(read: false).count
+      #コメント投稿者がカレントユーザーのものはカウントしない
+      @notifications_count=Notification.includes(:comment)
+      .where(user_id: current_user.id, read: false)
+      .where.not(comments: {user_id: current_user.id}).count
     end
 end
