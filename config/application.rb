@@ -25,5 +25,20 @@ module Achieve
 
     # config.action_view.field_error_proc=proc{ |html_tag,instance| html_tag }
     config.action_view.field_error_proc=proc{ |html_tag,_| html_tag }
+
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: true,
+        request_specs: false
+      g.fixture_replacement :factory_girl, dir: "spec/factories"
+      g.assets false
+      g.helper false
+    end
+
+    config.web_console.development_only = false
   end
 end
